@@ -1,6 +1,4 @@
 ## Fortune Cookie bot
-## Bot Token:
-# MTExMjU0NTc5MDY5OTc2NTc2MQ.GJLbFg.hQBPF18XoQIStyIhtrvzMgYeQUALC-X1keNUQM
 
 import random
 import discord
