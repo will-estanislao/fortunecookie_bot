@@ -2,6 +2,7 @@
 
 import random
 import discord
+import asyncio
 import os # this library is for using data stored in .env file
 from discord.ext import commands # To get extra bot features
 from dotenv import load_dotenv # Need this to connect to .env file and get var
@@ -9,6 +10,7 @@ from dotenv import load_dotenv # Need this to connect to .env file and get var
 random.seed()
 load_dotenv()
 bot = commands.Bot(command_prefix='fc!')
+audio = discord.File("wariokartcrash.mp3")
 
 
 # Functions
@@ -67,10 +69,13 @@ async def numbers(ctx):
 
 @bot.command(name="explode")
 async def explode(ctx):
-    await ctx.send("I guess this it... :\'^[. Goodbye cruel world...")
-    # Send wario audio attachment
-    # leave server
-    # go offline
+    async with ctx.typing():
+        await asyncio.sleep(3)
+    await ctx.send("I guess this it... :\'^[")
+    async with ctx.typing():
+        await asyncio.sleep(3)
+    await ctx.send(file=audio, content="Goodbye cruel world...")
+    await ctx.guild.leave()
 
 # Special option, EXPLODE - sends a yt vid of an explosion, says a final goodbye, and just quits lol
 # Write descripts for commands
