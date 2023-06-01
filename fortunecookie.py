@@ -10,7 +10,6 @@ from dotenv import load_dotenv # Need this to connect to .env file and get var
 random.seed()
 load_dotenv()
 bot = commands.Bot(command_prefix='fc!')
-audio = discord.File("wariokartcrash.mp3")
 
 
 # Functions
@@ -69,6 +68,8 @@ async def numbers(ctx):
 
 @bot.command(name="explode", brief="PLEASE NO!!", description="Explodes the bot")
 async def explode(ctx):
+    audio = discord.File("wariokartcrash.mp3")
+
     async with ctx.typing():
         await asyncio.sleep(3)
     await ctx.send("I guess this it... :\'^[")
