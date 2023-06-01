@@ -52,7 +52,7 @@ async def on_ready():
     print('I\'m online ^w^!')
 
 # Bot gives a fortune, and random numbers
-@bot.command(name='cookie')
+@bot.command(name='cookie', brief="Want a cookie?", description="Gives you a random fortune and 7 numbers")
 async def cookie(ctx):
     
     your_fortune = get_fortune()
@@ -60,14 +60,14 @@ async def cookie(ctx):
 
     await ctx.send("Your fortune today is:\n{}\nYour lucky numbers are:\n\t{}".format(your_fortune, your_numbers))
 
-@bot.command(name='numbers')
+@bot.command(name='numbers', brief="Give me some numbers!", description="Get 7 new numbers")
 async def numbers(ctx):
 
     your_numbers = get_lucky_numbers()
 
     await ctx.send("Your new lucky numbers are:\n {}".format(your_numbers))
 
-@bot.command(name="explode")
+@bot.command(name="explode", brief="PLEASE NO!!", description="Explodes the bot")
 async def explode(ctx):
     async with ctx.typing():
         await asyncio.sleep(3)
@@ -76,9 +76,6 @@ async def explode(ctx):
         await asyncio.sleep(3)
     await ctx.send(file=audio, content="Goodbye cruel world...")
     await ctx.guild.leave()
-
-# Special option, EXPLODE - sends a yt vid of an explosion, says a final goodbye, and just quits lol
-# Write descripts for commands
 
 # Runs bot
 bot.run(os.getenv('TOKEN'))
